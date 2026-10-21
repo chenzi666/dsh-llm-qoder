@@ -1,0 +1,23 @@
+# dsh-llm-qoder bundle patch
+#
+# 把 Qoder CN 注册成 Harness 的 LLM provider 路由 `qoder-cn`。
+#
+# 直连实现：签名（COSY）、设备指纹、自定义 Base64、SSE 解包全在插件进程内完成，
+# 不依赖 qodercn-agent-sdk、不依赖 CLI、不需要 bridge 或任何常驻服务。
+#
+# PAT 解析顺序：config.token → config.tokenFile → ~/.dsh/qoder.token → QODERCN_PERSONAL_ACCESS_TOKEN
+# PAT 生成入口：https://qoder.com.cn/account/integrations
+
+- insert:
+    - id: dsh-llm-qoder
+      name: 'dsh-llm-qoder'
+      config:
+        # 注册到 llm 服务的路由名；agent-default-model 里用 provider: qoder-cn
+        provider: qoder-cn
+        displayName: Qoder CN
+        # 请求没指定模型时的缺省值
+        defaultModel: DeepSeek-Flash
+        # 只把最近 N 条 user 轮次发给上游，旧历史不进请求。0 = 全量。
+        # 长会话里翻过去的敏感片段不该每轮重发给第三方模型，
+        # 这也能减少服务端内容审核对旧内容的命中（审核本身绕不过，只能不送）。
+        historyTurns: 3

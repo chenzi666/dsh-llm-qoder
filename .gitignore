@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+package-lock.json
+
+# credentials and runtime data -- never commit
+*.token
+.token
+qoder-accounts.json
+.credentials.yaml
+*.log
+wire.log
+
+# local probes / one-off debug scripts
+probe_*.mjs
+repro.mjs
+check_session*.mjs
+find_*.cjs
+scan_meta.js
+hook_*.mjs
+asar_grep.js
+grep_ctx.js
+grep_at.js
+grep_auth.js
+extract_asar.js
+audit-credentials.cjs
+
+# OS
+.DS_Store
+Thumbs.db
