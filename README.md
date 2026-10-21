@@ -18,6 +18,7 @@ DSH ──ctx.llm──> dsh-llm-qoder ──COSY 签名──> gateway.qoder.co
 | 原生工具调用（含多轮结果回传） | ✅ |
 | 原生思考过程（`reasoning_content`） | ✅ |
 | 推理强度（`parameters.reasoning_effort`） | ✅ 真实参数，实测 thinking 长度线性增长 |
+| 上下文窗口 200K / 400K / 1M 可选 | ✅ 同时改 DSH 上报值和请求体 `max_input_tokens` |
 | 图片输入 | ⏳ 未接（`inputModalities` 只声明 text） |
 | 双区（国内 / 国际） | ✅ 每账号独立 `realm` |
 | 多账号池 + 轮询 + 失败换号 | ✅ |

@@ -17,6 +17,10 @@
         displayName: Qoder CN
         # 请求没指定模型时的缺省值
         defaultModel: DeepSeek-Flash
+        # 上下文窗口档位：0 = 模型默认（200K）。可写 400000 / 1000000。
+        # 它同时决定 DSH 报的上限和请求体里的 model_config.max_input_tokens，
+        # 只改一边没用。超过模型支持的档位会自动截断（MiniMax / Auto 只有 200K）。
+        contextWindow: 1000000
         # 只把最近 N 条 user 轮次发给上游，旧历史不进请求。0 = 全量。
         # 长会话里翻过去的敏感片段不该每轮重发给第三方模型，
         # 这也能减少服务端内容审核对旧内容的命中（审核本身绕不过，只能不送）。
