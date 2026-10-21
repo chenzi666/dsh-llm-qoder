@@ -27,3 +27,4 @@ audit-credentials.cjs
 # OS
 .DS_Store
 Thumbs.db
+.commitmsg.txt
